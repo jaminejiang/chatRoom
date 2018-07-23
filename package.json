@@ -1,32 +1,26 @@
 {
-  "name": "chatroom",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "axios": "^0.18.0",
-    "react": "^16.4.1",
-    "react-dom": "^16.4.1",
-    "react-redux": "^5.0.7",
-    "react-router": "^4.3.1",
-    "react-router-dom": "^4.3.1",
-    "react-scripts": "1.1.4",
-    "redux": "^4.0.0",
-    "redux-thunk": "^2.3.0",
-    "socket.io-client": "^2.1.1"
-  },
+  "name": "server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "test": "babel-node --inspect --presets es2015 index.js"
   },
-  "babel": {
-    "presets": [
-      "es2015-ie",
-      "stage-0"
-    ],
-    "plugins": [
-      "add-module-exports"
-    ]
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-preset-es2015": "^6.24.1",
+    "http": "0.0.0",
+    "koa": "^2.5.1",
+    "koa-bodyparser": "^4.2.1",
+    "koa-router": "^7.4.0",
+    "koa-session": "^5.8.1",
+    "koa-static": "^5.0.0",
+    "koa-websocket": "^5.0.1",
+    "koa2-cors": "^2.0.5",
+    "nodemon": "^1.17.5",
+    "socket.io": "^2.1.1"
   }
 }

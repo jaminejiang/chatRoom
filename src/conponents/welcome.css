@@ -1,0 +1,7 @@
+@import '~antd/dist/antd.css';
+
+.wrapper{
+    width: 20%;
+    text-align: center;
+    margin: 100px auto;
+}

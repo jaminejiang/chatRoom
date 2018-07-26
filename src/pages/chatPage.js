@@ -4,6 +4,11 @@ import { connect } from "react-redux";
 import { myMessage } from "../actions/chat-actions";
 
 class Chat extends Component{
+
+    componentWillMount(){
+
+    }
+
     render(){
         let { msg, sendMsg } = this.props;
         return(

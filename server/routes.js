@@ -1,5 +1,6 @@
 let router = require('koa-router')();
 let db = require("./sql/async_db");
+let jwt = require("./jwt");
 
 let query = db.query; 
 async function queryUser(uname, upwd) {
@@ -20,7 +21,8 @@ router.post("/api/welcome", async(ctx)=>{
     }else{
         ctx.body = -1;
     }*/
-    ctx.body = "welcome";
+    let token = jwt.generateToken(uname);
+    ctx.body = {user: uname, token: token};
 });
 
 module.exports = {

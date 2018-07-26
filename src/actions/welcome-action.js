@@ -12,6 +12,11 @@ export function welcome(name,pwd,history) {
                     payload: ''
                 })
             }else{
+                sessionStorage.setItem("token", res.data.token);
+                dispatch({
+                    type: "SHOW_WELCOME",
+                    payload: res.data.user
+                });
                 history.push('/chat');
             }
         }).catch((err) => {

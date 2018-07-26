@@ -9,7 +9,7 @@ class Welcome extends Component{
     onClickWel(){
         let name = this.props.form.getFieldValue('userName');
         let pwd = this.props.form.getFieldValue('password');
-        this.props.onClickWelcome(name, pwd);
+        this.props.onClickWelcome(name, pwd, this.props.history);
     }
 
     render(){

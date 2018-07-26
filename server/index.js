@@ -31,7 +31,7 @@ io
     console.log("server connecting");
     socket.on("clientMsg", (data)=>{
         console.log(data)
-        socket.emit("serverMsg", "your message" + data);
+        socket.broadcast.emit("serverMsg", data.payload);
     })
 });
 

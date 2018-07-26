@@ -6,10 +6,10 @@ import { withRouter } from "react-router-dom";
 
 class Home extends Component{
     render(){
-        let { name, onClickWelcome } = this.props;
+        let { name, onClickWelcome, history  } = this.props;
         return(
             <div>
-                <Welcome name={name} onClickWelcome={onClickWelcome}/>
+                <Welcome name={name} onClickWelcome={onClickWelcome} history={history}/>
             </div>
         )
     }
@@ -23,7 +23,7 @@ function mapStateToProps(state) {
 
 function mapActionToProps(dispatch) {
     return{
-        onClickWelcome: (name, pwd) => { dispatch(welcome(name, pwd, history)); }
+        onClickWelcome: (name, pwd, history) => { dispatch(welcome(name, pwd, history)); }
     }
 }
 

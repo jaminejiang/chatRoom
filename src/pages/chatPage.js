@@ -1,15 +1,15 @@
 import React, { Component } from "react";
-import Chatlist from "../conponents/chatList";
+import ChatList from "../conponents/chatList";
 import { connect } from "react-redux";
-import { message } from "../actions/chat-actions";
+import { myMessage } from "../actions/chat-actions";
 
 class Chat extends Component{
     render(){
         let { msg, sendMsg } = this.props;
         return(
-            <Chatlist msg={msg} sendMsg={sendMsg}>
+            <ChatList msg={msg} sendMsg={sendMsg}>
                 
-            </Chatlist>
+            </ChatList>
         )
     }
 }
@@ -22,7 +22,7 @@ function mapStateToProps(state){
 
 function mapActionToProps(dispatch){
     return{
-        sendMsg: (msg)=> { dispatch(message(msg)); }
+        sendMsg: (msg)=> { dispatch(myMessage(msg)); }
     }
 }
 

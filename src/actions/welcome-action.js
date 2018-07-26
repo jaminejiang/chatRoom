@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 export function welcome(name,pwd,history) {
-    return (dispatch, getState) => {
+    return (dispatch) => {
         axios.post('http://127.0.0.1:8081/api/welcome',{
             name: name,
             pwd: pwd

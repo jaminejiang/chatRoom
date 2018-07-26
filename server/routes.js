@@ -11,13 +11,14 @@ async function queryUser(uname, upwd) {
 router.post("/api/welcome", async(ctx)=>{
     let uname = ctx.request.body.name;
     let upwd = ctx.request.body.pwd;
-    let user = await queryUser(uname, upwd);
+    /*let user = await queryUser(uname, upwd);
     console.log(user);
     if(user !== undefined){
         ctx.body = "welcome !";
     }else{
         ctx.body = -1;
-    }
+    }*/
+    ctx.body = "welcome";
 });
 
 module.exports = router ;

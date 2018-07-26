@@ -1,0 +1,45 @@
+.msg-left{
+    text-align:left;
+    margin-left: 10px;
+    margin-top: 5px;
+}
+
+.msg-span{
+    border-radius: 4px;
+    padding: 0px 20px;
+    display: inline-block;
+    height: 27px;
+}
+
+.msg-span-left{
+    background-color: #ffffff;
+    border: 1px solid #000000;
+}
+
+.msg-span-right{
+    background-color: #1890ff;
+    border: 1px solid #1890ff;
+}
+
+.msg-right{
+    text-align: right;
+    margin-right: 10px;
+    margin-top: 5px;
+}
+
+.msg-content{
+    position: relative;
+}
+
+.msg-input{
+    position: absolute;
+    left: 100px;
+    bottom: 10px;
+    width: 500px;
+}
+
+.msg-send-btn{
+    position: absolute;
+    bottom: 10px;
+    left: 620px;
+}

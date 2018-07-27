@@ -21,7 +21,7 @@ export function welcome(name,pwd,history) {
             }
         }).catch((err) => {
           console.log(err);
-        })
+        });
     }
 }
 

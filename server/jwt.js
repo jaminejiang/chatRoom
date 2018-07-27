@@ -14,7 +14,17 @@ function generateToken(user) {
     });
 }
 
+function decodeToken(token){
+    jwt.verify(token, JWT_SECRET, function(err, decoded) {
+        if(err){
+            return null;
+        }else{
+            return decoded.name;
+        }
+    });
+}
+
 module.exports = {
-    secret: JWT_SECRET,
-    generateToken: generateToken
+    generateToken: generateToken,
+    decodeToken: decodeToken
 }

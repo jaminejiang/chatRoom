@@ -12,4 +12,11 @@ function otherMessage(msg){
     }
 }
 
-export { myMessage, otherMessage  }
+function validateMe(token) {
+    return{
+        type: "VALIDATE_TOKEN",
+        payload: token
+    }
+}
+
+export { myMessage, otherMessage, validateMe  }

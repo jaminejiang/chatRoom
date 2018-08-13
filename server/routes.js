@@ -9,8 +9,6 @@ async function queryUser(uname, upwd) {
     return user;
 }
 
-let onLineUser = [];
-
 router.post("/api/welcome", async(ctx)=>{
     let uname = ctx.request.body.name;
     let upwd = ctx.request.body.pwd;
@@ -27,5 +25,4 @@ router.post("/api/welcome", async(ctx)=>{
 
 module.exports = {
     router: router,
-    onLineUser: onLineUser
 } ;

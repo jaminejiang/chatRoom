@@ -4,6 +4,7 @@ let session = require('koa-session');
 let staticServer = require('koa-static');
 let route = require("./routes");
 let cors = require('koa2-cors');
+let jwt = require("./jwt");
 
 let router = route.router, onLineUser = route.onLineUser;
 
@@ -12,6 +13,7 @@ let server = require("http").Server(app.callback());
 
 let io = require("socket.io")(server);
 
+var onlineUser = {};
 app.use(staticServer(__dirname + '/public'));
 app.keys = ["some secret hurr"];
 app.use(session(app));
@@ -33,9 +35,20 @@ io
 
     console.log("server connecting");
 
+    socket.on('clientValidate', (data)=>{
+        var result = jwt.decodeToken(data)
+
+        // 验证信息失败
+        if(result === null) {
+            socket.emit("serverValidate", -1);
+        } else {
+            onlineUser[result] = socket.id;
+            socket.emit('serverValidate', result);
+        }
+    })
+
     socket.on("clientMsg", (data)=>{
-        console.log(data)
-        socket.broadcast.emit("serverMsg", data.payload);
+        socket.broadcast.emit("serverMsg", data);
     });
 
     socket.on("disconnect", function (socket) {

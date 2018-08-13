@@ -20,22 +20,23 @@ class ChatList extends Component{
 
     sendMyMsg(){
         let val = this.state.val;
-        this.props.sendMsg({type:"right", payload:val});
+        this.props.socket.emit("clientMsg", val);
+        this.props.sendMsg({type:"GET_MY_MESSAGE", payload:val});
         this.setState({val:""});
     }
     render(){
 
         let myChatMsg = this.props.msg.map((msg, index) => {
-            if(msg.payload.type === "right"){
+            if(msg.type === "GET_MY_MESSAGE"){
                 return (
                     <div className="msg-right" key={index}>
                         <span className="msg-span msg-span-right">{msg.payload.payload}</span>
                     </div>
                 )
-            }else if(msg.payload.type === "left"){
+            }else if(msg.type === "GET_OTHER_MESSAGE"){
                 return (
-                    <div className="msg-left" key={[index]}>
-                        <span className="msg-span msg-span-left">{msg.payload.payload}</span>
+                    <div className="msg-left" key={index}>
+                        <span className="msg-span msg-span-left">{msg.payload}</span>
                     </div>
                 )
             }

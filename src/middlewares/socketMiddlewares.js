@@ -5,10 +5,10 @@ export function createSocketMiddlewares(socket) {
     return store => next => action => {
         if(!eventflag){
             eventflag = true;
-            socket.on("serverMsg", (data)=>{
+            /*socket.on("serverMsg", (data)=>{
                 console.log("receive message");
                 next(otherMessage({type:"left", payload:data}));
-            })
+            })*/
         }
         if(action.type === "GET_MY_MESSAGE"){
             console.log("emiting");

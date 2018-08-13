@@ -17,8 +17,13 @@ class Chat extends Component{
             this.socket.on("connect",()=>{
                 console.log("client connecting");
             });
-            this.socket.emit("clientValidate", ()=>{
-
+            this.socket.emit("clientValidate", token);
+            this.socket.on('serverValidate', (data)=>{
+                if(data === -1) {
+                    this.props.history.replace("/");
+                } else {
+                    this.props.setUserName(data);
+                }
             })
         }
     }
@@ -26,15 +31,16 @@ class Chat extends Component{
     componentDidMount(){
         this.socket.on("serverMsg", (data)=>{
             console.log("receive message");
-            next(otherMessage({type:"left", payload:data}));
+            this.props.getMsg(data);
         });
 
     }
 
     render(){
         let { msg, sendMsg } = this.props;
+        let socket = this.socket;
         return(
-            <ChatList msg={msg} sendMsg={sendMsg}>
+            <ChatList msg={msg} sendMsg={sendMsg} socket={socket}>
                 
             </ChatList>
         )
@@ -50,6 +56,8 @@ function mapStateToProps(state){
 function mapActionToProps(dispatch){
     return{
         sendMsg: (msg)=> { dispatch(myMessage(msg)); },
+        setUserName: (name) => { dispatch({ type: 'SHOW_WELCOME', payload: name}); },
+        getMsg : (msg) => { dispatch(otherMessage(msg))}
     }
 }
 

@@ -6,7 +6,7 @@ function generateToken(user) {
     //2. Use fields that are useful in other parts of the
     //app/collections/models
     var u = {
-        name: username,
+        name: user,
 
     };
     return token = jwt.sign(u, JWT_SECRET, {
@@ -14,14 +14,14 @@ function generateToken(user) {
     });
 }
 
-function decodeToken(token){
+function decodeToken(token) {
+    var result = null;
     jwt.verify(token, JWT_SECRET, function(err, decoded) {
-        if(err){
-            return null;
-        }else{
-            return decoded.name;
+        if(!err) {
+            result = decoded.name;
         }
     });
+    return result;
 }
 
 module.exports = {
